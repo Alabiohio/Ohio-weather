@@ -1,0 +1,219 @@
+html {
+  font-size: 16px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 50;
+  width: 100vw;
+}
+.hdNm {
+  font-size: 3rem
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'signika' , sans-serif;
+  }
+main {
+  margin-top: 6rem
+}
+
+#add {
+  font-size: 2rem;
+}
+#homeContainer {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  background-color: transparent;
+}
+
+
+
+#locaName {
+  font-size: 2.8rem;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 8%;
+  margin-top: 10%;
+  font-family: 'signika' , sans-serif;
+}
+#location {
+  border-radius: 20px;
+  font-size: 1rem;
+  background-color: aqua;
+  font-weight: 500;
+  font-family: 'signika' , sans-serif;
+  margin-top: 2rem;
+}
+
+#temp {
+  font-size: 7rem;
+  font-weight: 400;
+  margin-top: 15%;
+  font-family: 'signika' , sans-serif;
+}
+sup {
+  font-size: 6rem;
+}
+#weaInfo {
+  font-size: 2rem;
+  margin-bottom: 5rem;
+}
+#aqiBox {
+  font-size: 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-family: 'signika' , sans-serif;
+}
+.row {
+  width: 100%;
+}
+
+.forcasts {
+  margin-top: 20%;
+  height: 40%;
+  border-radius: 20px;
+  position: relative;
+  background-color: antiquewhite;
+  }
+#f1 {
+  
+}
+#fiveDysBox {
+  height: auto;
+  margin-top: 30%;
+  border-radius: 20px;
+  background-color: cadetblue;
+  position: relative;
+  padding: 0.3rem;
+}
+#fiveDysBox table thead {
+  background-color: transparent;
+  border: none
+}
+#fiveDysBox th {
+  font-size: 1rem;
+}
+#fiveDysBox td {
+  font-size: 1rem;
+  width: 80%;
+  background: cadetblue;
+  border: cadetblue 1px solid
+}
+#tFhrsBox {
+  margin-top: 2rem;
+  overflow-x: auto;
+  height: auto;
+  border-radius: 20px;
+  background-color: cadetblue;
+  position: relative;
+  padding: 0.3rem;
+}
+#tFhrsBox td {
+  font-size: 0.9rem;
+  background-color: cadetblue;
+  border: cadetblue 2px solid
+}
+
+#tFhrsBox table {
+  width: 100px;
+}
+
+#airInfo {
+  height: 200px;
+  display: flexfs;
+  flex-direction: column
+}
+.airInfos {
+  background-color: transparent;
+}
+.airI {
+  width: 40%;
+  height: 100%;
+}
+.sun_wind {
+  height: 48%;
+  width: 100%;
+  border-radius: 20px;
+  background-color: cadetblue;
+}
+#riseSet {
+  top: 52%;
+  
+}
+.sunText {
+  margin-top: 5%;
+  margin-left: 5%;
+  font-weight: 600;
+}
+
+#moreInfoBox {
+  border-radius: 20px;
+  background: cadetblue;
+  height: 100%;
+  width: 58%;
+}
+
+#moreInfoBox table {
+  background-color: cadetblue;
+  width: 95%;
+   margin-top: 0.6rem;
+  margin-left: 0.3rem
+}
+#moreInfoBox tr {
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: cadetblue;
+  border-top: 1px solid;
+  max-height: 90%
+}
+#moreInfoBox td {
+  background-color: cadetblue;
+  border-radius: 20px;
+  border: transparent 1px solid;
+  
+}
+#aqiBox2 {
+  margin-top: 2rem;
+  height: 13vh;
+  border-radius: 20px;
+  background-color: burlywood;
+  font-size: 2rem;
+  
+}
+.toAdd, #mainCont {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+}
+.toAdd {
+  display: block;
+}
+#mainCont {
+ display: none 
+}
+.load {
+  display: none;
+}
+#space {
+  height: 50vh;
+}
+
+@media (orientation: landscape) {
+    .forcasts {
+        height: 70vh; /* Example size */
+    }
+      #aqiBox2 {
+        height: 30vh;
+      }
+    
+}
