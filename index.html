@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Brief description of your website">
+    <meta name="author" content="Ohio">
+    <title>Weather App</title>
+
+    <!-- Link to external CSS files -->
+    <link rel="stylesheet" href="styles/style.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/css/foundation.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+  
+    <!-- Include external scripts (optional) -->
+    <script src="scripts/weather2.js" defer></script>
+</head>
+<body>
+
+    <header class="grid-container">
+        <div class="grid-x grid-margin-x">
+            <div class="cell">
+                <span class="hdNm">WEATHER</span>
+            </div>
+        </div>        
+      </header>
+
+    
+    <main>      
+        
+        <div class="grid-container toAdd align-center-middle text-center">
+              <div class="grid-x align-center-middle text-center">
+                   <div class="cell small-10">                    
+                       <input type="search" id="cityInputI">
+                       <button class="button" id="reInfoI">Search</button>                         
+                   </div>
+                  <div class="cell">
+                      <span>Or use your current Location</span>
+                      <div class="cell text-center align-center-middle">
+                          <button class="button clear" id="locationI">Turn on location services</button>
+                      </div>  
+                  </div>
+                  
+                  <div class="cell load">
+                      <l-tail-chase
+                          size="50"
+                          speed="1.75" 
+                          color="navy" 
+                          ></l-tail-chase>
+                  </div>
+                  
+              </div>
+        </div>        
+        
+        <div class="grid-container">
+            
+            <div class="grid-x align-center-middle text-center" id="mainCont">
+                <l-trefoil
+                    size="50"
+                    stroke="5"
+                    stroke-length="0.15"
+                    bg-opacity="0.1"
+                    speed="1.4" 
+                    color="navy" 
+                    ></l-trefoil>
+            </div>
+                         
+          <div class="grid-x grid-margin-x">
+              
+              <div class="cell small-2 medium-1 large-1 text-center">
+                  <button id="addCity">
+                       <i class="fas fa-plus" id="add"></i>
+                  </button>                 
+              </div>
+              
+              <div class="cell small-1 medium-1 large-1 text-center">
+                  <a class="button clear" id="settings" href="settings.html">
+                       <i class="fas fa-gear" id="add"></i>
+                  </a>                 
+              </div>
+                        
+              
+            <div class="cell small-8 medium-10 large-10 text-center">
+                <span class="" id="locaName">Alimosho</span>
+            </div>
+                 
+              <div class="cell text-center align-center-middle">
+                   <button class="button clear" id="location">Turn on location services</button>
+              </div>     
+              
+         </div>
+            
+        
+        <div class="grid-x grid-margin-x">
+          <div class="cell text-center">
+             <input type="search" id="cityInput">
+             <button class="button" id="reInfo">Search</button>
+        </div>
+        </div>
+        
+        
+           <div class="grid-x grid-margin-x">
+                            
+               <div class="cell text-center">
+                   <span id="temp">27°<sup id="celsius">c</sup></span>
+               </div>
+               
+                   <div class="cell text-center">
+                   <span id="weaInfo">Foggy 35°/24°</span>
+               </div>
+               
+                   <div class="cell text-center">
+                       <button id="aqiBox" class="button">AQI 70</button>
+                   </div>
+                   
+            </div>
+                 
+        <div class="grid-x grid-margin-x">
+            
+            <div class="cell" id="fiveDysBox">
+            <table>
+                    <thead>
+                        <tr>
+                    		    <th>Head1</th>
+                    		    <th>Head2</th>
+                    		</tr>
+                    </thead>                    		
+                    <tbody id="threeDysF"></tbody>
+                </table>
+        </div>
+               
+            <div class="cell" id="tFhrsBox">
+                <table id="tFhrsBoxTable">
+                    <tr id="temp24"></tr>
+                    <tr id="icon"></tr>
+                    <tr id="wind"></tr>
+                    <tr id="times"></tr>            
+                </table>
+            </div>
+        </div>
+                    
+            <div class="forcasts grid-x" id="airInfo">
+                
+                <div class="airI">                
+                <div class="sun_wind" id="windSpeed">
+                <span id="speed" class="sunText">speed</span>                             
+            </div>                  
+                <div class="sun_wind" id="riseSet">
+                    <div id="sunrise" class="col-md-6 sunText">sunrise</div>
+                    <div id="sunset" class="col-md-6 sunText">sunset</div>
+                </div>                     
+                </div>
+            
+            <div id="moreInfoBox">
+                <table>                 
+                       <tr>
+                           <td>Humidity</td>
+                           <td id="humid">78%</td>
+                       </tr>
+                       <tr>
+                           <td>Real feal</td>
+                           <td id="realFeel">78%</td>
+                       </tr>
+                       <tr>
+                           <td>Pressure</td>
+                           <td id="pressure">78 mmhg</td>
+                       </tr>                    
+																												 <tr>
+                           <td>UV Index</td>
+                           <td id="uvI">78%</td>
+                       </tr>    
+               </table>
+            </div>
+            
+            </div>
+            
+            <div class="grid-x grid-margin-x">
+                  <div id="aqiBox2" class="cell">
+                <span class="text-center" id="aqi2">AQI 74</span>
+                </div>
+                        
+           
+            <!--
+            <div class="cell" id="f1">
+            <div class="cell" id="fiveDysBox">
+                <table>
+                    <thead>
+                        <tr>
+                    		    <th>Head1</th>
+                    		    <th>Head2</th>
+                    		</tr>
+                    </thead>                    		
+                    <tbody id="threeDysF"></tbody>
+                </table>
+            </div>
+            </div>
+            
+             <div class="col-12" id="f2">
+            <div class="col-12 col-md-11 col-sm-11 my-md-0" id="tFhrsBox">
+                <table cellspacing="10" id="tFhrsBoxTable">
+                    <tr id="temp24"></tr>
+                    <tr id="icon"></tr>
+                    <tr id="wind"></tr>
+                    <tr id="times"></tr>            
+                </table>
+            </div>
+            
+            </div>
+            
+             <div class="forcasts col-12 col-md-11 col-sm-11" id="airInfo">
+                 
+        <div class="sun_wind col-5.5 col-md-5.5 col-sm-5.5" id="windSpeed">
+           <span id="speed" class="fs-1 sunText">speed</span> 
+       </div>
+                 
+          <div class="sun_wind col-5.5 col-md-5.5 col-sm-5.5 " id="riseSet">
+              <div id="sunrise" class="col-md-6 fs-1 sunText">sunrise</div>
+              <div id="sunset" class="col-md-6 fs-1 sunText">sunset</div>
+        </div>
+       
+                  <div id="moreInfoBox2" class="col-6">
+               <table>
+                   <tbody>
+                       <tr>
+                           <td>Humidity</td>
+                           <td id="humid">78%</td>
+                       </tr>
+                       <tr>
+                           <td>Real feal</td>
+                           <td id="realFeel">78%</td>
+                       </tr>
+                       <tr>
+                           <td>Pressure</td>
+                           <td id="pressure">78%</td>
+                       </tr>
+                       <tr>
+                           <td>Chance of rain</td>
+                           <td id="rain">78%</td>
+                       </tr>    
+																												 <tr>
+                           <td>UV Indebx</td>
+                           <td id="uvI">78%</td>
+                       </tr>    
+                   </tbody>
+               </table>
+           </div>
+                 
+        </div>
+            
+            <div class="col-12">
+                  <div id="aqiBox2" class="col-12 col-md-11 col-sm-11">
+                <span class="text-center" id="aqi2">AQI 74</span>
+        </div> 
+            </div>
+          
+            
+            
+        </div>
+	  
+        <!-- <div class="forcasts" id="fiveDysBox">
+            
+        </div>        
+          <div class="forcasts" id="24hrsBox">
+            
+        </div>
+	  
+        <br>
+        
+        <div class="forcasts" id="airInfo">
+        <div class="sun_wind " id="windSpeed">
+            
+        </div>
+          <div class="sun_wind " id="riseSet">
+            
+        </div>
+        
+        <div id="moreInfoBox">
+            
+        </div>
+        </div>
+        
+        <div id="aqiBox2">
+            
+        </div> 
+          
+                
+       
+    </div>
+               -->
+              <div id="space"></div>
+            </div>
+            
+    </main>
+    
+      		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.9.0/dist/js/foundation.min.js" crossorigin="anonymous"></script>       
+      <script>
+        $(document).foundation();
+    </script>
+      
+        <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/tailChase.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/trefoil.js"></script>        
+        
+</body>
+
+</html>
