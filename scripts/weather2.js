@@ -26,6 +26,7 @@ const mainCont = document.getElementById('mainCont');
 const latUser = localStorage.getItem('userLat');
 const lonUser = localStorage.getItem('userLon' );
 
+
 function delay(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
@@ -97,7 +98,7 @@ async function fetchWeatherAndForecast(cityOrLat, lon = null) {
 
         // Update DOM with weather data
         locaName.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
-        temp.innerHTML = `${Math.floor(weatherData.main.temp)}°<sup>c</sup>`;
+        temp.innerHTML = `${Math.floor(weatherData.main.temp)}°C`;
         weaInfo.textContent = `${weatherData.weather[0].description}`;
         humid.textContent = `${weatherData.main.humidity}%`;
         pressure.innerHTML = `${Math.floor(weatherData.main.pressure * 0.750062)}mmHg`;
@@ -117,14 +118,14 @@ async function fetchWeatherAndForecast(cityOrLat, lon = null) {
             days[dayKey].push(item);
         });
 
-        const dayNames = Object.keys(days).slice(0, 3).map((dateStr, index) => {
+        const dayNames = Object.keys(days).slice(0, 7).map((dateStr, index) => {
             if (index === 0) return 'Today';
             if (index === 1) return 'Tomorrow';
             return new Date(dateStr).toLocaleDateString('en-US', { weekday: 'long' });
         });
         
         // Loop through days and calculate temperature range and weather condition
-        Object.entries(days).slice(0, 3).forEach(([dateStr, forecasts], i) => {
+        Object.entries(days).slice(0, 7).forEach(([dateStr, forecasts], i) => {
             const dayName = dayNames[i]; // Map the name (Today, Tomorrow, etc.)
             
             // Get all the temperatures for the day
