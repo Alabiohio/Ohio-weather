@@ -54,13 +54,13 @@
     
     <main>      
         
-        <div class="grid-x gaFilButs text-center">
-            <div class="cell">
-        <button class="button galFil" id="galFil1" aria-label="view all categories">Today</button>
-        <button class="button galFil" id="hourlyBtn" aria-label="view actors portrait only">Hourly</button>
-        <button class="button galFil" id="galFil4" aria-label="view athlete portrait only">Daily</button>
-        <button class="button galFil" id="galFil5" aria-label="view reality portraits only">Monthly</button>
-        <button class="button galFil" id="galFil6" aria-label="view imaginative drawings only">Air quality</button>
+      <div class="grid-x gaFilButs text-center">
+       <div class="cell" id="hm">
+        <button class="button galFil" data-value="todayBtn" aria-label="view all categories">Today</button>
+        <button class="button galFil" data-value="hourlyBtn" aria-label="view actors portrait only">Hourly</button>
+        <button class="button galFil" data-value="dailyBtn" aria-label="view athlete portrait only">Daily</button>
+        <button class="button galFil" data-value="monthlyBtn" aria-label="view reality portraits only">Monthly</button>
+        <button class="button galFil" data-value="aqiBtn" aria-label="view imaginative drawings only">Air quality</button>
     </div>
         </div>
     
@@ -137,7 +137,8 @@
         </div>
         </div>
         
-        
+            <div id="dynaCont">
+                
            <div class="grid-x grid-margin-x">
                             
                <div class="cell text-center">
@@ -218,11 +219,8 @@
                  </div>
             </div>
             
-            
-            
-            <div class="grid-x grid-margin-x">
-                <div class="news-container" id="news-list"></div>              
             </div>
+          
                   
               <div id="space"></div>
             </div>
