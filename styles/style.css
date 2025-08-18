@@ -13,11 +13,40 @@ header {
 .hdNm {
   font-size: 3rem
 }
+.title-bar {
+  width: 100vw
+}
+.top-bar {
+  width: 100vw
+}
 body {
   height: 100vh;
   width: 100vw;
   font-family: 'signika' , sans-serif;
   }
+
+.gaFilButs {
+  white-space: nowrap; /* Prevents wrapping */
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-radius: 0px;
+  background: rgba(127,225,0,0.1);
+ /* border: 1px solid darkgreen;*/
+  overflow-x: auto;
+}
+.galFil {
+  margin-bottom: 0;
+  height: 100%; /* Ensures buttons take full height */
+  width: 30%; /* Ensures buttons fill their grid cell */
+  background: transparent;
+  font-family: "Fraunces", serif;
+  font-weight: 500;
+  font-style: normal; 
+  font-size: 1rem;
+}
+
+
 main {
   margin-top: 6rem
 }
@@ -86,19 +115,23 @@ sup {
 }
 #fiveDysBox {
   height: auto;
-  margin-top: 30%;
+  margin-top: 3rem;
   border-radius: 20px;
   background-color: cadetblue;
   position: relative;
   padding: 0.3rem;
 }
-#fiveDysBox table thead {
+#tFhrsBox thead, #tFhrsBox thead tr th {
+  font-size: 0.8rem;
   background-color: transparent;
-  border: none
+  border: none;
 }
-#fiveDysBox th {
-  font-size: 1rem;
+#fiveDysBox thead {
+  background-color: transparent;
+  border: none;
+  font-size: 0.8rem
 }
+
 #fiveDysBox td {
   font-size: 1rem;
   width: 80%;
@@ -106,7 +139,7 @@ sup {
   border: cadetblue 1px solid
 }
 #tFhrsBox {
-  margin-top: 2rem;
+  margin-top: 8rem;
   overflow-x: auto;
   height: auto;
   border-radius: 20px;
@@ -124,21 +157,20 @@ sup {
   width: 100px;
 }
 
-#airInfo {
-  height: 200px;
-  display: flexfs;
-  flex-direction: column
+.airInfo {
+  margin-top: 2rem;
+  width: 100vw
 }
+
 .airInfos {
   background-color: transparent;
 }
 .airI {
-  width: 40%;
+  width: 100%;
   height: 100%;
 }
 .sun_wind {
-  height: 48%;
-  width: 100%;
+  height: 100px;
   border-radius: 20px;
   background-color: cadetblue;
 }
@@ -152,31 +184,28 @@ sup {
   font-weight: 600;
 }
 
-#moreInfoBox {
+.moreInfoBox {
   border-radius: 20px;
   background: cadetblue;
-  height: 100%;
-  width: 58%;
+  margin-top: 2rem;
 }
 
-#moreInfoBox table {
+.moreInfoBox table {
   background-color: cadetblue;
   width: 95%;
    margin-top: 0.6rem;
   margin-left: 0.3rem
 }
-#moreInfoBox tr {
+.moreInfoBox tr {
   font-size: 1rem;
   font-weight: 600;
   background-color: cadetblue;
   border-top: 1px solid;
   max-height: 90%
 }
-#moreInfoBox td {
+.moreInfoBox td {
   background-color: cadetblue;
-  border-radius: 20px;
   border: transparent 1px solid;
-  
 }
 #aqiBox2 {
   margin-top: 2rem;
@@ -196,7 +225,7 @@ sup {
   z-index: 100;
 }
 .toAdd {
-  display: block;
+  display: none;
 }
 #mainCont {
  display: none 
@@ -204,6 +233,73 @@ sup {
 .load {
   display: none;
 }
+.news-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100vw;
+  height: auto;
+  background: transparent;
+  margin-top: 4rem;
+}
+.news-card {
+  height: 100%;
+  background: #fff;
+  width: 100%;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+   .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+   .news-content {
+      padding: 15px;
+    				width: 150px;
+     background: red;
+     height: 100%
+    }
+
+    .news-content h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 0 0 10px;
+      color: #34495e;
+    }
+
+    .news-content p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .news-content small {
+      display: block;
+      margin: 10px 0;
+      color: #888;
+    }
+
+    .news-content a {
+      text-decoration: none;
+      color: #3498db;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .news-content a:hover {
+      color: #1d6fa5;
+    }
+
 #space {
   height: 50vh;
 }
