@@ -225,7 +225,7 @@ sup {
   z-index: 100;
 }
 .toAdd {
-  display: block;
+  display: none;
 }
 #mainCont {
  display: none 
