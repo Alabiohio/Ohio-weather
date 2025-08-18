@@ -17,9 +17,11 @@
   
     <!-- Include external scripts (optional) -->
     <script src="scripts/weather2.js" defer></script>
+    <script src="scripts/new.js" defer></script>
+
 </head>
 <body>
-
+    <!--
     <header class="grid-container">
         <div class="grid-x grid-margin-x">
             <div class="cell">
@@ -27,9 +29,43 @@
             </div>
         </div>        
       </header>
+    -->
+    <header class="grid-container">
+        
+        <div class="grid-x grid-margin-x">
+    <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+        <button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+        <div class="title-bar-title">Menu</div>
+    </div>
 
+    <div class="top-bar" id="responsive-menu">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <li class="menu-text">My Website</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+        </div>
+   
+    </header>
     
     <main>      
+        
+        <div class="grid-x gaFilButs text-center">
+            <div class="cell">
+        <button class="button galFil" id="galFil1" aria-label="view all categories">Today</button>
+        <button class="button galFil" id="hourlyBtn" aria-label="view actors portrait only">Hourly</button>
+        <button class="button galFil" id="galFil4" aria-label="view athlete portrait only">Daily</button>
+        <button class="button galFil" id="galFil5" aria-label="view reality portraits only">Monthly</button>
+        <button class="button galFil" id="galFil6" aria-label="view imaginative drawings only">Air quality</button>
+    </div>
+        </div>
+    
+        
+        
         
         <div class="grid-container toAdd align-center-middle text-center">
               <div class="grid-x align-center-middle text-center">
@@ -105,7 +141,7 @@
            <div class="grid-x grid-margin-x">
                             
                <div class="cell text-center">
-                   <span id="temp">27°<sup id="celsius">c</sup></span>
+                   <span id="temp">27°C</span>
                </div>
                
                    <div class="cell text-center">
@@ -120,41 +156,47 @@
                  
         <div class="grid-x grid-margin-x">
             
+            <div class="cell" id="tFhrsBox">
+                <div>Hourly Weather</div>
+                <table id="tFhrsBoxTable">
+                    <tbody>
+                        <tr id="temp24"></tr>
+                        <tr id="icon"></tr>
+                        <tr id="wind"></tr>
+                        <tr id="times"></tr> 
+                    </tbody>                               
+                </table>
+            </div>
+        </div>
+            
             <div class="cell" id="fiveDysBox">
             <table>
                     <thead>
                         <tr>
-                    		    <th>Head1</th>
-                    		    <th>Head2</th>
+                    		    <th>7-Day Weather Forecast</th>                    		    
                     		</tr>
                     </thead>                    		
                     <tbody id="threeDysF"></tbody>
                 </table>
         </div>
                
-            <div class="cell" id="tFhrsBox">
-                <table id="tFhrsBoxTable">
-                    <tr id="temp24"></tr>
-                    <tr id="icon"></tr>
-                    <tr id="wind"></tr>
-                    <tr id="times"></tr>            
-                </table>
-            </div>
-        </div>
+            
                     
-            <div class="forcasts grid-x" id="airInfo">
-                
-                <div class="airI">                
-                <div class="sun_wind" id="windSpeed">
+            <div class="grid-x grid-margin-x airInfo">
+                          
+                <div class="cell small-6 sun_wind" id="windSpeed">
                 <span id="speed" class="sunText">speed</span>                             
-            </div>                  
-                <div class="sun_wind" id="riseSet">
+            </div>      
+                
+                <div class="cell small-6 sun_wind" id="riseSet">
                     <div id="sunrise" class="col-md-6 sunText">sunrise</div>
                     <div id="sunset" class="col-md-6 sunText">sunset</div>
                 </div>                     
-                </div>
+                
+            </div>
             
-            <div id="moreInfoBox">
+             <div class="grid-x grid-margin-x">
+                 <div class="cell moreInfoBox">
                 <table>                 
                        <tr>
                            <td>Humidity</td>
@@ -173,123 +215,15 @@
                            <td id="uvI">78%</td>
                        </tr>    
                </table>
+                 </div>
             </div>
             
-            </div>
+            
             
             <div class="grid-x grid-margin-x">
-                  <div id="aqiBox2" class="cell">
-                <span class="text-center" id="aqi2">AQI 74</span>
-                </div>
-                        
-           
-            <!--
-            <div class="cell" id="f1">
-            <div class="cell" id="fiveDysBox">
-                <table>
-                    <thead>
-                        <tr>
-                    		    <th>Head1</th>
-                    		    <th>Head2</th>
-                    		</tr>
-                    </thead>                    		
-                    <tbody id="threeDysF"></tbody>
-                </table>
+                <div class="news-container" id="news-list"></div>              
             </div>
-            </div>
-            
-             <div class="col-12" id="f2">
-            <div class="col-12 col-md-11 col-sm-11 my-md-0" id="tFhrsBox">
-                <table cellspacing="10" id="tFhrsBoxTable">
-                    <tr id="temp24"></tr>
-                    <tr id="icon"></tr>
-                    <tr id="wind"></tr>
-                    <tr id="times"></tr>            
-                </table>
-            </div>
-            
-            </div>
-            
-             <div class="forcasts col-12 col-md-11 col-sm-11" id="airInfo">
-                 
-        <div class="sun_wind col-5.5 col-md-5.5 col-sm-5.5" id="windSpeed">
-           <span id="speed" class="fs-1 sunText">speed</span> 
-       </div>
-                 
-          <div class="sun_wind col-5.5 col-md-5.5 col-sm-5.5 " id="riseSet">
-              <div id="sunrise" class="col-md-6 fs-1 sunText">sunrise</div>
-              <div id="sunset" class="col-md-6 fs-1 sunText">sunset</div>
-        </div>
-       
-                  <div id="moreInfoBox2" class="col-6">
-               <table>
-                   <tbody>
-                       <tr>
-                           <td>Humidity</td>
-                           <td id="humid">78%</td>
-                       </tr>
-                       <tr>
-                           <td>Real feal</td>
-                           <td id="realFeel">78%</td>
-                       </tr>
-                       <tr>
-                           <td>Pressure</td>
-                           <td id="pressure">78%</td>
-                       </tr>
-                       <tr>
-                           <td>Chance of rain</td>
-                           <td id="rain">78%</td>
-                       </tr>    
-																												 <tr>
-                           <td>UV Indebx</td>
-                           <td id="uvI">78%</td>
-                       </tr>    
-                   </tbody>
-               </table>
-           </div>
-                 
-        </div>
-            
-            <div class="col-12">
-                  <div id="aqiBox2" class="col-12 col-md-11 col-sm-11">
-                <span class="text-center" id="aqi2">AQI 74</span>
-        </div> 
-            </div>
-          
-            
-            
-        </div>
-	  
-        <!-- <div class="forcasts" id="fiveDysBox">
-            
-        </div>        
-          <div class="forcasts" id="24hrsBox">
-            
-        </div>
-	  
-        <br>
-        
-        <div class="forcasts" id="airInfo">
-        <div class="sun_wind " id="windSpeed">
-            
-        </div>
-          <div class="sun_wind " id="riseSet">
-            
-        </div>
-        
-        <div id="moreInfoBox">
-            
-        </div>
-        </div>
-        
-        <div id="aqiBox2">
-            
-        </div> 
-          
-                
-       
-    </div>
-               -->
+                  
               <div id="space"></div>
             </div>
             
