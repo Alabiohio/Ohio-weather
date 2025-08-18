@@ -1,4 +1,9 @@
-  const weatherCodeMap = {
+function hourlyGets() {
+    
+const qLat = sessionStorage.getItem('lat');
+const qLon = sessionStorage.getItem('lon' );
+  
+const weatherCodeMap = {
     0: { desc: "Clear sky", icon: "01d" },
     1: { desc: "Mainly clear", icon: "02d" },
     2: { desc: "Partly cloudy", icon: "03d" },
@@ -29,8 +34,8 @@
     99: { desc: "Thunderstorm with heavy hail", icon: "11d" }
   };
 
-  async function getForecast(lat, lon) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation,rain,snowfall,cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high,evapotranspiration,vapour_pressure_deficit,wind_speed_10m,wind_direction_10m,weathercode&timezone=auto`;
+  async function getForecast(qLat, qLon) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${qLat}&longitude=${qLon}&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation,rain,snowfall,cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high,evapotranspiration,vapour_pressure_deficit,wind_speed_10m,wind_direction_10m,weathercode&timezone=auto`;
     
     const res = await fetch(url);
     const data = await res.json();
@@ -52,10 +57,10 @@
           
           <div>
             <span style="font-size: 0.9rem; font-weight: 600">
-              ${new Date(data.hourly.time[i]).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}
+              ${new Date(data.hourly.time[i]).toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit'})}
             </span>
           </div>
-          
+      
           <div class="text-right" style="margin-left: 0.9rem;">
             <img style="height: 35px; width: 35px" src="https://openweathermap.org/img/wn/${weather.icon}.png" 
                  alt="${weather.desc}" title="${weather.desc}" />
@@ -96,9 +101,13 @@
     }
   }
 
+getForecast(qLat, qLon);
+
+    }
+hourlyGets();
   // Get user's location
-  navigator.geolocation.getCurrentPosition(
+/*  navigator.geolocation.getCurrentPosition(
     pos => getForecast(pos.coords.latitude, pos.coords.longitude),
     () => getForecast(6.5244, 3.3792) // fallback: Lagos, Nigeria
   );
-
+*/

@@ -26,6 +26,104 @@ const mainCont = document.getElementById('mainCont');
 const latUser = localStorage.getItem('userLat');
 const lonUser = localStorage.getItem('userLon' );
 
+const dynaCont = document.getElementById('dynaCont');
+
+async function fetchWeatherContent() {
+  
+    console.log("started");
+    try {
+        let weatherContentResponse = await fetch(weatherContentUrl);
+         if (weatherContentResponse.status == "500") {
+              console.log('Server Error');
+         } else if (!weatherContentResponse.ok) {
+              console.log("Something went wrong");
+              throw new Error(`HTTP Error: ${weatherContentResponse.status}`);
+        }
+
+        let weatherContentHtml = await weatherContentResponse.text();
+        dynaCont.innerHTML = weatherContentHtml;
+
+    } catch (error) {
+        console.error("Something went wrong", error);
+         if (!navigator.onLine) {
+              console.log('Check your connection and try again');
+         }
+    }
+  
+}
+
+const headMenuButtons = document.querySelector("#hm");
+if (headMenuButtons) {
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = headMenuButtons.querySelectorAll("button"); // Get all buttons
+
+    // Set the default active button (hm1) and load its content
+    /*const defaultButton = headMenuButtons.querySelector("button[data-value='hm1']");
+    if (defaultButton) {
+        defaultButton.classList.add("clicked");
+        currentActiveButton = defaultButton;
+        weatherContentUrl = "https://ohioalabi.github.io/Ohio/library.html"; // Default URL for hm1
+        fetchWeatherContent();
+    }*/
+
+    // Handle button clicks
+    headMenuButtons.addEventListener("click", (event) => {
+        let button = event.target;
+
+        // If not a button, find the closest button
+        if (button.tagName !== "BUTTON") {
+            button = button.closest("button");
+        }
+
+        /*if (button && button.hasAttribute("data-value")) {
+            // Clear styles for all buttons
+            buttons.forEach(btn => {
+                btn.classList.remove("clicked");
+            });
+
+            // Apply styles to the clicked button
+            button.classList.add("clicked");
+          */
+            const value = button.getAttribute("data-value");
+         
+         switch (value) {
+              case "todayBtn":
+              weatherContentUrl = "https://ohioalabi.github.io/Ohio/library.html";
+              fetchWeatherContent();    
+              break;
+              case "hourlyBtn":
+              weatherContentUrl = "https://Alabiohio.github.io/Ohio-weather/hourly.html";
+              fetchWeatherContent();
+              loadHourlyScript();
+              break;
+              case "dailyBtn":
+              weatherContentUrl = "https://ohioalabi.github.io/Ohio/audio.html";
+              fetchWeatherContent();
+              break;
+              case "monthlyBtn":
+              weatherContentUrl = "https://ohioalabi.github.io/Ohio/downloaded.html";
+              fetchWeatherContent();
+              break;
+              case "aqiBtn":
+              weatherContentUrl = "https://ohioalabi.github.io/Ohio/updates.html";
+              fetchWeatherContent();
+              break;
+              default:
+              console.log("Unhandled button value:", value);
+            }
+    });
+});
+
+}
+
+
+function loadHourlyScript() {
+     let hourlyScript = document.createElement("script");
+     hourlyScript.src = "scripts/hourly.js";  
+     hourlyScript.src.defer = true;
+     dynaCont.appendChild(hourlyScript);
+}
+
 
 function delay(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
@@ -55,6 +153,9 @@ async function fetchWeatherAndForecast(cityOrLat, lon = null) {
             const lat = geocodeData.coord.lat;
             const lon = geocodeData.coord.lon;
 
+             sessionStorage.setItem("lat", lat);
+             sessionStorage.setItem("lon", lon);
+             
             // Now we have lat and lon, create the AQI URL
             aqiUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${apiKey}`;
         } catch (error) {
@@ -105,8 +206,8 @@ async function fetchWeatherAndForecast(cityOrLat, lon = null) {
         realfeal.textContent = `${weatherData.main.feels_like} °C`;
 
         speed.textContent = `Wind Speed: ${weatherData.wind.speed} m/s`;
-        sunrise.textContent = `${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})} Sunrise`;
-        sunset.textContent = `${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})} Sunset`;
+        sunrise.textContent = `${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit'})} Sunrise`;
+        sunset.textContent = `${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit'})} Sunset`;
         
         const days = {};
         
@@ -121,7 +222,7 @@ async function fetchWeatherAndForecast(cityOrLat, lon = null) {
         const dayNames = Object.keys(days).slice(0, 7).map((dateStr, index) => {
             if (index === 0) return 'Today';
             if (index === 1) return 'Tomorrow';
-            return new Date(dateStr).toLocaleDateString('en-US', { weekday: 'long' });
+            return new Date(dateStr).toLocaleDateString('en-GB', { weekday: 'long' });
         });
         
         // Loop through days and calculate temperature range and weather condition
@@ -226,7 +327,7 @@ async function getOpenMeteoForecast(lat, lon) {
             if (dt.getHours() === now.getHours()) {
                 tdTime.textContent = "Now";
             } else {
-                tdTime.textContent = dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                tdTime.textContent = dt.toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit' });
             }
 
             // Temp column
@@ -372,19 +473,18 @@ document.addEventListener('DOMContentLoaded', () => {
 // SETTINGS PAGE
 const delDefLocation = document.getElementById('delDefLocation');
 
-if (latUser && lonUser) {
 if (delDefLocation) {
+     
+if (latUser && lonUser) {
   delDefLocation.addEventListener("click", () => {
     localStorage.removeItem('userLat');
     localStorage.removeItem('userLon');
     delDefLocation.disabled = true;
   });
-}
 } else {
   delDefLocation.disabled = true;
-  delDefLocation.removeEventListener("click")
 }
   
-  
+}
   
   
